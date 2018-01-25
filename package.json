@@ -1,0 +1,41 @@
+{
+  "name": "xwtools",
+  "version": "1.0.0",
+  "description": "The WebForm / WebCall library by lirax.ua (PBX Cloud Platform)",
+  "main": "dist/js/xwtools.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "build-dev": "webpack --config webpack.config.dev.js",
+    "start": "webpack-dev-server --open --watch-poll --config webpack.config.dev.js",
+    "watch": "webpack --progress --watch --config webpack.config.dev.js",
+    "build": "webpack --config webpack.config.prod.js",
+    "server": "http-server"
+  },
+  "keywords": [
+    "call",
+    "form",
+    "phone"
+  ],
+  "author": "Ivan Kostin",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/gesero/xwtools/issues"
+  },
+  "homepage": "https://github.com/gesero/xwtools",
+  "devDependencies": {
+    "babel-cli": "^6.26.0",
+    "babel-core": "^6.26.0",
+    "babel-loader": "^7.1.2",
+    "babel-preset-es2015": "^6.24.1",
+    "http-server": "^0.11.1",
+    "jshint": "^2.9.5",
+    "jshint-loader": "^0.8.4",
+    "uglifyjs-webpack-plugin": "^1.1.6",
+    "webpack": "^3.10.0",
+    "webpack-dev-server": "^2.11.1",
+    "webpack-merge": "^4.1.1"
+  },
+  "dependencies": {
+    "sourcebuster": "^1.1.0"
+  }
+}

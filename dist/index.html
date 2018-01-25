@@ -1,0 +1,215 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+<script src="js/xwtools.js"></script>
+	<meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>LiraX - demo</title>
+  <link rel="shortcut icon" href="data:image/vnd.microsoft.icon;base64,AAABAAEAICAAAAAAIACoEAAAFgAAACgAAAAgAAAAQAAAAAEAIAAAAAAAACAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA6qoqDO25N1jwujmZ77o5ye+6Ourwuzn68Ls5+u+6OurvujnJ8Lo5me25N1jqqioMAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA6ro3Je66Opvvujn18bw6//G8Ov/xvDr/8bw6//G8Ov/xvDr/8bw6//G8Ov/xvDr/8bw6/++6Ofbuujmc6ro3JQAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA358gCO66Oonwuzn68bw6//G8Ov/xvDr/8bw6//G8Ov/xvDr/8bw6//G8Ov/xvDr/8bw6//G8Ov/xvDr/8bw6//G8Ov/wuzn67ro6id+fIAgAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAOq4OSTvujnR8bw6//G8Ov/xvDr/8bw6//G8Ov/xvDr/8bw6//G8Ov/xvDr/8bw6//G8Ov/xvDr/8bw6//G8Ov/xvDr/8bw6//G8Ov/xvDr/77o50eq4OSQAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAADwuDgy77s56PG8Ov/xvDr/8bw6//G8Ov/xvDr/8bw6//G8Ov/xvDr/8bw6//G8Ov/xvDr/8bw6//G8Ov/xvDr/8bw6//G8Ov/xvDr/8bw6//G8Ov/xvDr/77s56PC4ODIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA6rg5JO+6OurxvDr/8bw6//G8Ov/xvDr/8bw6//G8Ov/xvDr/8bw6//G8Ov/xvDr/8bw6//G8Ov/xvDr/8bw6//G8Ov/xvDr/8bw6//G8Ov/xvDr/8bw6//G8Ov/xvDr/77o66uq4OSQAAAAAAAAAAAAAAAAAAAAAAAAAAOOqOQnvujnR8bw6//G8Ov/xvDr/8bw6//G8Ov/xvDr/8bw6//G8Ov/xvDr/8bw6//G8Ov/xvDr/8bw6//G8Ov/xvDr/8bw6//G8Ov/xvDr/8bw6//G8Ov/xvDr/8bw6//G8Ov/xvDr/77o50eWyMwoAAAAAAAAAAAAAAAAAAAAA7ro6ifG8Ov/xvDr/8bw6//G8Ov/xvDr/8bw6//G8Ov/xvDr/8bw6//G8Ov/xvDr/8bw6//G8Ov/xvDr/8bw6//G8Ov/xvDr/8bw6//G8Ov/xvDr/8bw6//G8Ov/xvDr/8bw6//G8Ov/xvDr/7rs5igAAAAAAAAAAAAAAAOq4OSTwuzn68bw6//G8Ov/xvDr/8bw6//G8Ov/xvDr/8bw6//G+P//31YX/++zH//357f///v3///77//XKaP/xvDr/8bw6//G8Ov/xvDr/9Mpo//768P/76cD/8bw6//G8Ov/xvDr/8bw6//G8Ov/wuzn66ro3JQAAAAAAAAAA7ro5nPG8Ov/xvDr/8bw6//G8Ov/xvDr/8bw6//G8Ov/0yGH//fTg/////////////////////////////fjr//PCT//xvDr/8bw6//LCTv/9+Ov///////357f/xvDr/8bw6//G8Ov/xvDr/8bw6//G8Ov/uujmcAAAAAOuxJw3vuzn08bw6//G8Ov/xvDr/8bw6//G8Ov/xvDr/88VX//779P///////vz4//jenv/zxVn/9dB1///+/f///////O/R//G9P//xvT///O/R/////////v3/9tB0//G8Ov/xvDr/8bw6//G8Ov/xvDr/8bw6/++6OfXrsScN7bk4V/G8Ov/xvDr/8bw6//G8Ov/xvDr/8bw6//G8Ov/76sL////////+/P/1y2r/8bw6//G8Ov/xvDr/+d2c////////////+eKr//niqv////////////jenv/xvDr/8bw6//G8Ov/xvDr/8bw6//G8Ov/xvDr/8bw6/+25OFfuuzia8bw6//G8Ov/xvDr/8bw6//G8Ov/xvDr/8bw6//789///////++zJ//G8Ov/xvDr/8bw6//G8Ov/xvDz/++vE///////////////////////768T/8bw8//G8Ov/xvDr/8bw6//G8Ov/xvDr/8bw6//G8Ov/xvDr/7rs4mu+6OcjxvDr/8bw6//G8Ov/xvDr/8bw6//G8Ov/xvDr////////////66Lz/8bw6//G8Ov/xvDr/8bw6//G8Ov/ywEf//vXj/////////////vXj//LAR//xvDr/8bw6//G8Ov/xvDr/8bw6//G8Ov/xvDr/8bw6//G8Ov/vujnI77o56/G8Ov/xvDr/8bw6//G8Ov/xvDr/8bw6//G8Ov////////////rovP/xvDr/8bw6//G8Ov/xvDr/8bw6//LASP/99uX////////////99ub/8sBJ//G8Ov/xvDr/8bw6//G8Ov/xvDr/8bw6//G8Ov/xvDr/8bw6/++6Oevvujn58bw6//G8Ov/xvDr/8bw6//G8Ov/xvDr/8bw6////////////+ui8//G8Ov/xvDr/8bw6//G8Ov/xvDz/++zH///////////////////////77Mj/8b08//G8Ov/xvDr/8bw6//G8Ov/xvDr/8bw6//G8Ov/xvDr/77o5+e+6OfnxvDr/8bw6//G8Ov/xvDr/8bw6//G8Ov/xvDr////////////66Lz/8bw6//G8Ov/xvDr/8bw6//jen/////////////niqv/54an////////////43p//8bw6//G8Ov/xvDr/8bw6//G8Ov/xvDr/8bw6//G8Ov/vujn577o56/G8Ov/xvDr/8bw6//G8Ov/xvDr/8bw6//G8Ov////////////rovP/xvDr/8bw6//G8Ov/20HX///7+///////879D/8b09//G9Pf/879D//////////v/20Hb/8bw6//G8Ov/xvDr/8bw6//G8Ov/xvDr/8bw6/++6OevvujnI8bw6//G8Ov/xvDr/8bw6//G8Ov/xvDr/8bw6////////////+ui8//G8Ov/xvDr/8bw6//357f///////fjq//LCTf/xvDr/8bw6//LBS//9+Or///////768P/xvDr/8bw6//G8Ov/xvDr/8bw6//G8Ov/xvDr/77o5yO67OJrxvDr/8bw6//G8Ov/xvDr/8bw6//G8Ov/xvDr////////////66Lz/8bw6//G8Ov/xvDr/++rD//768P/0ymb/8bw6//G8Ov/xvDr/8bw6//TKZv/++vD/++rD//G8Ov/xvDr/8bw6//G8Ov/xvDr/8bw6//G8Ov/uuzia7bk4V/G8Ov/xvDr/8bw6//G8Ov/xvDr/8bw6//G8Ov////////////rovP/xvDr/8bw6//G8Ov/xvDr/8bw6//G8Ov/xvDr/8bw6//G8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" />
+
+	<link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.100.2/css/materialize.min.css">
+	<link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+	
+  <nav>
+    <div class="nav-wrapper">
+            
+        <div class="">
+            <button type="submit" class="waves-effect waves-light btn lirax-make-call">Make Call</button>
+        </div>
+        
+    </div>
+  </nav>
+
+	<div class="container">
+            <div class="row">
+                <div class="">
+                        <button type="submit" class="waves-effect waves-light btn lirax-make-call">Make Call</button>
+                    </div>
+                <form class="col s12 lirax-custom-form">
+                  <div class="row">
+                    <div class="input-field col s12">
+                      <input id="name" type="text" name="name" class="validate" value="test_name">
+                      <label for="name">Name</label>
+                    </div>
+                  </div>
+                  <div class="row">
+                    <div class="input-field col s12">
+                      <input id="phone" type="tel" name="phone" class="validate" value="0224934567">
+                      <label for="phone">Phone</label>
+                    </div>
+                  </div>
+                  <div class="row">
+                    <div class="input-field col s12">
+                      <input id="lirax_pipeline_status_id" type="text" name="lirax_pipeline_status_id" class="validate" value="5684759348">
+                      <label for="lirax_pipeline_status_id">lirax_pipeline_status_id</label>
+                    </div>
+                  </div>
+                  <div class="row">
+                    <div class="input-field col s12">
+                      <input id="lirax_deal_name" type="text" name="lirax_deal_name" class="validate" value="test_deal_name">
+                      <label for="lirax_deal_name">lirax_deal_name</label>
+                    </div>
+                  </div>
+                  <div class="row">
+                    <div class="input-field col s12">
+                      <input id="lirax_deal_sum" type="text" name="lirax_deal_sum" class="validate" value="test_deal_sum">
+                      <label for="lirax_deal_sum">lirax_deal_sum</label>
+                    </div>
+                  </div>
+                  <div class="row">
+                    <div class="input-field col s12">
+                      <input id="lirax_deal_task" type="text" name="lirax_deal_task" class="validate" value="test_deal_task">
+                      <label for="lirax_deal_task">lirax_deal_task</label>
+                    </div>
+                  </div>
+                  <div class="row">
+                    <div class="input-field col s12">
+                      <input id="lirax_deal_tag" type="text" name="lirax_deal_tag" class="validate" value="test_deal_tag">
+                      <label for="lirax_deal_tag">lirax_deal_tag</label>
+                    </div>
+                  </div>
+                  <div class="row">
+                    <div class="input-field col s12">
+                      <input id="lirax_contact_task" type="text" name="lirax_contact_task" class="validate" value="test_contact_task">
+                      <label for="lirax_contact_task">lirax_contact_task</label>
+                    </div>
+                  </div>
+                  <div class="row">
+                    <div class="input-field col s12">
+                      <input id="lirax_contact_tag" type="text" name="lirax_contact_tag" class="validate" value="test_contact_tag">
+                      <label for="lirax_contact_tag">lirax_contact_tag</label>
+                    </div>
+                  </div>
+                  <div class="row">
+                    <div class="input-field col s12">
+                      <input type="text" class="datepicker" name="date">
+                      <label for="phone">Date</label>
+                    </div>
+                  </div>
+                  <div class="row">
+                     <div class="input-field col s12">
+                                <select>
+                                  <option value="" disabled selected>Choose your option</option>
+                                  <option selected value="1">Option 1</option>
+                                  <option value="2">Option 2</option>
+                                  <option value="3">Option 3</option>
+                                </select>
+                                <label>Materialize Select</label>
+                              </div>
+                  </div>
+                  <div class="row">
+                    <div class="col s12">
+                            <input type="checkbox" id="checkbox" name="checkbox" />
+                            <label for="checkbox">Red</label>
+                    </div>
+                  </div>
+                  <div class="row">
+                    <div class="input-field col s12">
+                            <button type="submit" class="waves-effect waves-light btn"><i class="material-icons left">send</i>Send</button>
+                    </div>
+                    <div class="input-field col s12">
+                        <a href="#" class="button lirax-custom-form">Send</a>
+                    </div>
+                  </div>
+                </form>
+            </div>
+	</div>
+	<div class="">
+            <button type="submit" class="waves-effect waves-light btn lirax-make-call">Make Call</button>
+        </div>
+  <div class="container">
+            Book the Call
+            <div class="row">
+                <form class="col s12 lirax-custom-callback-form">
+                  <div class="row">
+                    <div class="input-field col s12">
+                      <input id="phone" type="tel" name="phone" class="validate" value="0224934567">
+                      <label for="phone">Phone</label>
+                    </div>
+                  </div>
+                  <div class="row">
+                    <div class="input-field col s12">
+                            <button type="submit" class="waves-effect waves-light btn"><i class="material-icons left">send</i>Book the Call</button>
+                    </div>
+                    <div class="input-field col s12">
+                        <a href="#" class="button lirax-custom-callback-form">Book the Call</a>
+                    </div>
+                  </div>
+                </form>
+            </div>
+  </div>
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.100.2/js/materialize.min.js"></script>
+	
+  <script>
+    jQuery(document).ready(function() {
+      jQuery('select').material_select();
+
+      var picker_end_date =  jQuery('.datepicker').pickadate({
+          selectMonths: true, // Creates a dropdown to control month
+          selectYears: 15, // Creates a dropdown of 15 years to control year,
+          today: 'Today',
+          clear: 'Clear',
+          close: 'Ok',
+          closeOnSelect: false // Close upon selecting a date,
+        });
+            var picker = picker_end_date.pickadate('picker');
+            var now_dt=new Date();
+            picker.set('select', now_dt, {format: 'dd-mm-yyyy'});
+              jQuery( document ).on( "liraxEventFormSubmit", function( event, arg ) {
+                    console.log( "liraxEventFormSubmit event ", event.detail.success );
+                });
+                document.addEventListener("liraxEventCallBackSubmit", function(e){
+                  console.log('liraxEventCallBackSubmit event ', e.detail.success);
+                });
+      var tool = new xwtools();  
+      tool.liraxWebPhoneInit({
+        widgetId: "",
+        targetClass: "lirax-make-call",
+        scriptUrl: ""
+      });
+      tool.liraxWebFormInit({
+        widgetId: "",
+        targetClass: "lirax-custom-form",
+        scriptUrl: "",
+        prefix: '+380',
+        infoMessage: 'Message from web site: ',
+        successMessage: 'Data sent successfully!',
+        errorMessage: 'Data sent error!',
+        nameError: 'must be not empty and more then 3 letters',
+        phoneError: 'must be not empty and more then 8 digits',
+        onSubmit: function() {
+          console.log('submit');
+        },
+        onSuccess: function() {
+          console.log('success');
+        },
+        onError: function() {
+          console.log('error');
+        }
+      });
+      tool.liraxWebCallInit({
+        widgetId: "",
+        targetClass: "lirax-custom-callback-form",
+        scriptUrl: "",
+        prefix: '+380',
+        successMessage: 'Data sent successfully!',
+        errorMessage: 'Data sent error!',
+        phoneError: 'must be not empty and more then 8 digits',
+        onSubmit: function() {
+          console.log('submit');
+        },
+        onSuccess: function() {
+          console.log('success');
+        },
+        onError: function() {
+          console.log('error');
+        }
+      });
+    });
+  </script>
+</body>
+</html>

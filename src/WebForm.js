@@ -19,13 +19,16 @@ export default class WebPhone {
 	}
 
 	init() {
-		let el = document.querySelector('form.'+this.targetClass);
-		let childEl = el.querySelector('a.'+this.targetClass);
-		let that = this;
-		utils.bindEvent(el, 'submit', this.contactFormDataProcess.bind(that));
-		if (childEl) {
-			utils.bindEvent(childEl, 'click', this.contactFormDataProcess.bind(that));	
+		let el = document.querySelectorAll('form.'+this.targetClass);
+		for (let i = 0; i < el.length; i++) {
+			let childEl = el[i].querySelector('a.'+this.targetClass);
+			let that = this;
+			utils.bindEvent(el[i], 'submit', this.contactFormDataProcess.bind(that));
+			if (childEl) {
+				utils.bindEvent(childEl, 'click', this.contactFormDataProcess.bind(that));	
+			}
 		}
+		
 	}
 	
 	contactFormDataProcess(e) {

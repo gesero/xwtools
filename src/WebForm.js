@@ -32,16 +32,23 @@ export default class WebPhone {
 	}
 	
 	contactFormDataProcess(e) {
+		let webForm,
+		event = e || window.event;
+		if (event.type == 'submit') {
+            webForm = event.target;
+        } else {
+            webForm = utils.closest(event.target, this.targetClass, this.targetClass);
+        }
 		e.preventDefault();
-		let validate = this.contactFormValidate();
+		let validate = this.contactFormValidate(e, webForm);
 		if (validate) {
-			let data = this.conatctFormDataCollect(e);
-			this.contactFormDataSend(data);	
+			let data = this.conatctFormDataCollect(e, webForm);
+			this.contactFormDataSend(data, webForm);	
 		}
 		
 	}
 
-	contactFormValidate() {
+	contactFormValidate(e, webForm) {
 		let webFormNameErrorMessage = this.nameError;
         if (webFormNameErrorMessage == undefined || webFormNameErrorMessage == '') {
             webFormNameErrorMessage = 'Error';
@@ -52,31 +59,30 @@ export default class WebPhone {
             webFormPhoneErrorMessage = 'Error';
         }
         
-        let webFormInputName = document.querySelector('form.'+this.targetClass+' input[name="name"]');
+        let webFormInputName = webForm.querySelector('input[name="name"]');
         let webFormInputNameVal = webFormInputName.value;
-        let webForm = document.querySelector('form.'+this.targetClass);
-
+        
         if (webFormInputNameVal == undefined) {
             return false;
         } else if (webFormInputNameVal.length < 4 || webFormInputNameVal == '') {
             if (webForm.querySelector('.lirax-custom-form-name-validate') !== null ) {
-                utils.setText(document.querySelector('form.'+this.targetClass+' .lirax-custom-form-name-validate'),webFormNameErrorMessage);
+                utils.setText(webForm.querySelector('.lirax-custom-form-name-validate'),webFormNameErrorMessage);
             } else {
             	webFormInputName.insertAdjacentHTML('afterend', '<div class="lirax-custom-form-name-validate" style="color:red;font-size:12px;width:300px;"></div>');
-                utils.setText(document.querySelector('form.'+this.targetClass+' .lirax-custom-form-name-validate'),webFormNameErrorMessage);
+                utils.setText(webForm.querySelector('.lirax-custom-form-name-validate'),webFormNameErrorMessage);
             }
             return false;
         } else {
         	if (webForm.querySelector('.lirax-custom-form-name-validate') !== null ) {
-                utils.setText(document.querySelector('form.'+this.targetClass+' .lirax-custom-form-name-validate'),'');
+                utils.setText(webForm.querySelector('.lirax-custom-form-name-validate'),'');
             } else {
             	webFormInputName.insertAdjacentHTML('afterend', '<div class="lirax-custom-form-name-validate" style="color:red;font-size:12px;width:300px;"></div>');
-                utils.setText(document.querySelector('form.'+this.targetClass+' .lirax-custom-form-name-validate'),'');
+                utils.setText(webForm.querySelector('.lirax-custom-form-name-validate'),'');
             }
             
         }
         
-        let webFormInputPhone = document.querySelector('form.'+this.targetClass+' input[name="phone"]');
+        let webFormInputPhone = webForm.querySelector('input[name="phone"]');
         let webFormInputPhoneVal = webFormInputPhone.value;
         webFormInputPhoneVal = webFormInputPhoneVal.replace(/[^0-9]/gi, '');
         if (this.prefix.length > 0) {
@@ -86,18 +92,18 @@ export default class WebPhone {
             return false;
         } else if (webFormInputPhoneVal.length < 9 || webFormInputPhoneVal == '') {
             if (webForm.querySelector('.lirax-custom-form-phone-validate') !== null ) {
-                utils.setText(document.querySelector('form.'+this.targetClass+' .lirax-custom-form-phone-validate'),webFormPhoneErrorMessage);
+                utils.setText(webForm.querySelector('.lirax-custom-form-phone-validate'),webFormPhoneErrorMessage);
             } else {
             	webFormInputPhone.insertAdjacentHTML('afterend', '<div class="lirax-custom-form-phone-validate" style="color:red;font-size:12px;width:300px;"></div>');
-                utils.setText(document.querySelector('form.'+this.targetClass+' .lirax-custom-form-phone-validate'),webFormPhoneErrorMessage);
+                utils.setText(webForm.querySelector('.lirax-custom-form-phone-validate'),webFormPhoneErrorMessage);
             }
             return false;
         } else {
         	if (webForm.querySelector('.lirax-custom-form-phone-validate') !== null ) {
-                utils.setText(document.querySelector('form.'+this.targetClass+' .lirax-custom-form-phone-validate'),'');
+                utils.setText(webForm.querySelector('.lirax-custom-form-phone-validate'),'');
             } else {
             	webFormInputPhone.insertAdjacentHTML('afterend', '<div class="lirax-custom-form-phone-validate" style="color:red;font-size:12px;width:300px;"></div>');
-                utils.setText(document.querySelector('form.'+this.targetClass+' .lirax-custom-form-phone-validate'),'');
+                utils.setText(webForm.querySelector('.lirax-custom-form-phone-validate'),'');
             }
             
         }
@@ -105,16 +111,10 @@ export default class WebPhone {
         return true;
 	}
 
-	conatctFormDataCollect(e) {
-		let form,
-		    event = e || window.event,
-		    webFormInputPhoneVal;
-		if (event.type == 'submit') {
-            form = event.target;
-        } else {
-            form = document.querySelector('form.'+this.targetClass);
-        }
-        let formData = utils.serializeArray(form), 
+	conatctFormDataCollect(e, form) {
+		let webFormInputPhone = form.querySelector('input[name="phone"]');
+        let webFormInputPhoneVal = webFormInputPhone.value;
+		let formData = utils.serializeArray(form), 
             formFields = {'message':this.infoMessage, 'integration':{}};
         utils.forEach(formData, (b, el) => {
         	if (b.name == 'lirax_pipeline_status_id') {
@@ -159,8 +159,7 @@ export default class WebPhone {
 		return JSON.stringify(formFields);
 	}
 
-	contactFormDataSend(data) {
-		let webForm = document.querySelector('form.'+this.targetClass);
+	contactFormDataSend(data, webForm) {
 		if (typeof this.onSubmit === "function") {
 			this.onSubmit();
 		}
@@ -169,17 +168,17 @@ export default class WebPhone {
 				let data = JSON.parse(response);
 				if (data.message.ok == '1') {
 					if (webForm.querySelector('.lirax-custom-form-sent-message') !== null ) {
-						utils.setText(document.querySelector('form.'+this.targetClass+' .lirax-custom-form-sent-message'),this.successMessage);
-						utils.setText(document.querySelector('form.'+this.targetClass+' .lirax-custom-form-name-validate'),'');
-						utils.setText(document.querySelector('form.'+this.targetClass+' .lirax-custom-form-phone-validate'),'');
+						utils.setText(webForm.querySelector('.lirax-custom-form-sent-message'),this.successMessage);
+						utils.setText(webForm.querySelector('.lirax-custom-form-name-validate'),'');
+						utils.setText(webForm.querySelector('.lirax-custom-form-phone-validate'),'');
 						utils.addClass(webForm, 'lirax-custom-form-sent');
 					} else {
 						let newDiv = document.createElement('div');
 						utils.addClass(newDiv, 'lirax-custom-form-sent-message');
 						webForm.insertBefore(newDiv, webForm.firstChild);
-						utils.setText(document.querySelector('form.'+this.targetClass+' .lirax-custom-form-sent-message'),this.successMessage);
-						utils.setText(document.querySelector('form.'+this.targetClass+' .lirax-custom-form-name-validate'),'');
-						utils.setText(document.querySelector('form.'+this.targetClass+' .lirax-custom-form-phone-validate'),'');
+						utils.setText(webForm.querySelector('.lirax-custom-form-sent-message'),this.successMessage);
+						utils.setText(webForm.querySelector('.lirax-custom-form-name-validate'),'');
+						utils.setText(webForm.querySelector('.lirax-custom-form-phone-validate'),'');
 						utils.addClass(webForm, 'lirax-custom-form-sent');
 					}
 					//utils.triggerCustomEvent('liraxEventFormSubmit', {success:true});
@@ -188,17 +187,17 @@ export default class WebPhone {
 					}
 				} else {
 					if (webForm.querySelector('.lirax-custom-form-sent-message') !== null ) {
-						utils.setText(document.querySelector('form.'+this.targetClass+' .lirax-custom-form-sent-message'),this.errorMessage);
-						utils.setText(document.querySelector('form.'+this.targetClass+' .lirax-custom-form-name-validate'),'');
-						utils.setText(document.querySelector('form.'+this.targetClass+' .lirax-custom-form-phone-validate'),'');
+						utils.setText(webForm.querySelector('.lirax-custom-form-sent-message'),this.errorMessage);
+						utils.setText(webForm.querySelector('.lirax-custom-form-name-validate'),'');
+						utils.setText(webForm.querySelector('.lirax-custom-form-phone-validate'),'');
 						utils.addClass(webForm, 'lirax-custom-form-sent');
 					} else {
 						let newDiv = document.createElement('div');
 						utils.addClass(newDiv, 'lirax-custom-form-sent-message');
 						webForm.insertBefore(newDiv, webForm.firstChild);
-						utils.setText(document.querySelector('form.'+this.targetClass+' .lirax-custom-form-sent-message'),this.errorMessage);
-						utils.setText(document.querySelector('form.'+this.targetClass+' .lirax-custom-form-name-validate'),'');
-						utils.setText(document.querySelector('form.'+this.targetClass+' .lirax-custom-form-phone-validate'),'');
+						utils.setText(webForm.querySelector('.lirax-custom-form-sent-message'),this.errorMessage);
+						utils.setText(webForm.querySelector('.lirax-custom-form-name-validate'),'');
+						utils.setText(webForm.querySelector('.lirax-custom-form-phone-validate'),'');
 						utils.addClass(webForm, 'lirax-custom-form-sent');
 					}
 					if (typeof this.onError === "function") {
@@ -209,17 +208,17 @@ export default class WebPhone {
 			},
 			() => {
 				if (webForm.querySelector('.lirax-custom-form-sent-message') !== null ) {
-					utils.setText(document.querySelector('form.'+this.targetClass+' .lirax-custom-form-sent-message'),this.errorMessage);
-					utils.setText(document.querySelector('form.'+this.targetClass+' .lirax-custom-form-name-validate'),'');
-					utils.setText(document.querySelector('form.'+this.targetClass+' .lirax-custom-form-phone-validate'),'');
+					utils.setText(webForm.querySelector('.lirax-custom-form-sent-message'),this.errorMessage);
+					utils.setText(webForm.querySelector('.lirax-custom-form-name-validate'),'');
+					utils.setText(webForm.querySelector('.lirax-custom-form-phone-validate'),'');
 					utils.addClass(webForm, 'lirax-custom-form-sent');
 				} else {
 					let newDiv = document.createElement('div');
 					utils.addClass(newDiv, 'lirax-custom-form-sent-message');
 					webForm.insertBefore(newDiv, webForm.firstChild);
-					utils.setText(document.querySelector('form.'+this.targetClass+' .lirax-custom-form-sent-message'),this.errorMessage);
-					utils.setText(document.querySelector('form.'+this.targetClass+' .lirax-custom-form-name-validate'),'');
-					utils.setText(document.querySelector('form.'+this.targetClass+' .lirax-custom-form-phone-validate'),'');
+					utils.setText(webForm.querySelector('.lirax-custom-form-sent-message'),this.errorMessage);
+					utils.setText(webForm.querySelector('.lirax-custom-form-name-validate'),'');
+					utils.setText(webForm.querySelector('.lirax-custom-form-phone-validate'),'');
 					utils.addClass(webForm, 'lirax-custom-form-sent');
 				}
 				if (typeof this.onError === "function") {

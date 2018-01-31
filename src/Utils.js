@@ -129,5 +129,18 @@ export default {
             }
         }
         return s;
+    },
+
+    closest(el, selector, stopSelector) {
+        var retval = null;
+        while (el) {
+            el = el.parentElement;
+            if (el.className.indexOf(selector) > -1) {
+                retval = el;break;
+            } else if (stopSelector && el.className.indexOf(stopSelector) > -1) {
+                break;
+            }
+        }
+        return retval;
     }
 };
